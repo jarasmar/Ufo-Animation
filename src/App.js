@@ -1,8 +1,21 @@
 import './App.css';
 
 function App() {
+
+  // const canvas = document.getElementById("app-canvas")
+  // const ctx = canvas.getContext("2d");
+
+  // function createBee() {
+  //   ctx.beginPath();
+  //   ctx.arc(200, 200, 60, 0, 2 *  Math.PI)
+  //   ctx.fillStyle = 'rgb(0, 0, 0)'
+  //   ctx.fill()
+  // }
+  
+  // setInterval(createBee, 15)
+
   return (
-    <h1>UFO</h1>
+    <canvas id="app-canvas"></canvas>
   );
 }
 
