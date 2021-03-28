@@ -1,3 +1,5 @@
+import React from 'react';
+import Canvas from './Canvas';
 import './App.css';
 
 function App() {
@@ -15,7 +17,7 @@ function App() {
   // setInterval(createBee, 15)
 
   return (
-    <canvas id="app-canvas"></canvas>
+    <Canvas />
   );
 }
 
