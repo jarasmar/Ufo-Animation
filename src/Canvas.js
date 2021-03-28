@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 
 const Canvas = props => {
   
+  // const { draw, ...rest } = props;
   const canvasRef = useRef(null);
 
   // Resize Canvas
@@ -17,20 +18,20 @@ const Canvas = props => {
   // Background Drawing Functions
   function createSky(ctx) {
     ctx.beginPath();
-    var grd = ctx.createLinearGradient(0, 100, 0,300);
-    grd.addColorStop(0, "rgba(71, 0, 68, 1)");
-    grd.addColorStop(1, "rgba(100, 1, 73, 1)");
-    ctx.fillStyle = grd;
+    var grd1 = ctx.createLinearGradient(0, 100, 0,300);
+    grd1.addColorStop(0, "rgba(71, 0, 68, 1)");
+    grd1.addColorStop(1, "rgba(100, 1, 73, 1)");
+    ctx.fillStyle = grd1;
     ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height)
   }
 
   function createLandingPlanet(ctx) {
     ctx.beginPath();
     ctx.ellipse(400, 450, 430, 100, 0, Math.PI, 0);
-    var grd = ctx.createLinearGradient(0, 300, 0, 400);
-    grd.addColorStop(0, "rgba(247, 185, 80, 1)");
-    grd.addColorStop(1, "rgba(134, 27, 74, 1)");
-    ctx.fillStyle = grd;
+    var grd2 = ctx.createLinearGradient(0, 300, 0, 400);
+    grd2.addColorStop(0, "rgba(247, 185, 80, 1)");
+    grd2.addColorStop(1, "rgba(134, 27, 74, 1)");
+    ctx.fillStyle = grd2;
     ctx.fill();  
   
     buildLightCraters(ctx) 
@@ -101,19 +102,19 @@ const Canvas = props => {
     // Planet A
     ctx.beginPath()
     ctx.arc(200, 200, 40, 0, 2 * Math.PI)
-    var grd = ctx.createRadialGradient(190, 210, 30, 200, 220, 90);
-    grd.addColorStop(0, "rgba(247, 185, 80, .1)");
-    grd.addColorStop(1, "rgba(100, 1, 73, 1)");
-    ctx.fillStyle = grd
+    var grd3 = ctx.createRadialGradient(190, 210, 30, 200, 220, 90);
+    grd3.addColorStop(0, "rgba(247, 185, 80, .1)");
+    grd3.addColorStop(1, "rgba(100, 1, 73, 1)");
+    ctx.fillStyle = grd3
     ctx.fill()
 
     // Planet B
     ctx.beginPath()
     ctx.arc(750, 20, 60, 0, 2 * Math.PI)
-    var grd = ctx.createRadialGradient(750, 110, 20, 740, 120, 120);
-    grd.addColorStop(0, "rgba(247, 185, 80, .3)");
-    grd.addColorStop(1, "rgba(100, 1, 73, 1)");
-    ctx.fillStyle = grd
+    var grd4 = ctx.createRadialGradient(750, 110, 20, 740, 120, 120);
+    grd4.addColorStop(0, "rgba(247, 185, 80, .3)");
+    grd4.addColorStop(1, "rgba(100, 1, 73, 1)");
+    ctx.fillStyle = grd4
     ctx.fill()
   }
 
@@ -149,36 +150,36 @@ const Canvas = props => {
     ctx.fill()
   }
   function createPointyStar(ctx, x, y, size, opacity) {
-  ctx.beginPath();
-  ctx.moveTo(x, y);
-  ctx.lineTo(x+size, y+2*size)
-  ctx.lineTo(x+2*size, y)
-  ctx.fillStyle = `rgba(249, 248, 113, ${opacity})`
-  ctx.fill();  
+    ctx.beginPath();
+    ctx.moveTo(x, y);
+    ctx.lineTo(x+size, y+2*size)
+    ctx.lineTo(x+2*size, y)
+    ctx.fillStyle = `rgba(249, 248, 113, ${opacity})`
+    ctx.fill();  
 
-  ctx.beginPath();
-  ctx.moveTo(x, y);
-  ctx.lineTo(x+size, y-2*size)
-  ctx.lineTo(x+2*size, y)
-  ctx.fillStyle = `rgba(249, 248, 113, ${opacity})`
-  ctx.fill();  
+    ctx.beginPath();
+    ctx.moveTo(x, y);
+    ctx.lineTo(x+size, y-2*size)
+    ctx.lineTo(x+2*size, y)
+    ctx.fillStyle = `rgba(249, 248, 113, ${opacity})`
+    ctx.fill();  
 
-  ctx.beginPath();
-  ctx.moveTo(x+size, y-size);
-  ctx.lineTo(x-size, y)
-  ctx.lineTo(x+size, y+size)
-  ctx.fillStyle = `rgba(249, 248, 113, ${opacity})`
-  ctx.fill(); 
+    ctx.beginPath();
+    ctx.moveTo(x+size, y-size);
+    ctx.lineTo(x-size, y)
+    ctx.lineTo(x+size, y+size)
+    ctx.fillStyle = `rgba(249, 248, 113, ${opacity})`
+    ctx.fill(); 
 
-  ctx.beginPath();
-  ctx.moveTo(x+size, y+size);
-  ctx.lineTo(x+3*size, y)
-  ctx.lineTo(x+size, y-size)
-  ctx.fillStyle = `rgba(249, 248, 113, ${opacity})`
-  ctx.fill(); 
+    ctx.beginPath();
+    ctx.moveTo(x+size, y+size);
+    ctx.lineTo(x+3*size, y)
+    ctx.lineTo(x+size, y-size)
+    ctx.fillStyle = `rgba(249, 248, 113, ${opacity})`
+    ctx.fill(); 
   }
 
-  function addStars(ctx, starOpacity1, starOpacity2, starOpacity3) {
+  function addStars(ctx, starOpacity1, starOpacity2, starOpacity3, lowStarOpacity) {
     createBlueStar(ctx, 100, 200, 5)
     createBlueStar(ctx, 200, 130, 6)
     createBlueStar(ctx, 210, 260, 4)
@@ -207,15 +208,36 @@ const Canvas = props => {
     createPointyStar(ctx, 270, 280, 5, starOpacity2)
     createPointyStar(ctx, 560, 310, 4, starOpacity3)
   
-    // changeStarLight();
+    changeStarLight(starOpacity1, starOpacity2, starOpacity3, lowStarOpacity);
+  }
+
+  function changeStarLight(starOpacity1, starOpacity2, starOpacity3, lowStarOpacity) {
+    if (Math.round(starOpacity1 * 10) / 10 === 0.7) {
+      lowStarOpacity = true;
+    }
+    if (Math.round(starOpacity1 * 10) / 10 === 0.1) {
+      lowStarOpacity = false;
+    }
+
+    if (lowStarOpacity) {
+      starOpacity1 -= 0.02
+      starOpacity2 -= 0.01
+      starOpacity3 -= 0.01
+    }
+    if (!lowStarOpacity ) {
+      starOpacity1 += 0.02
+      starOpacity2 += 0.01
+      starOpacity3 += 0.01
+    }
   }
 
 
-  function addBackground(ctx, starOpacity1, starOpacity2, starOpacity3) {
+  function addBackground(canvas, ctx, starOpacity1, starOpacity2, starOpacity3, lowStarOpacity) {
+    ctx.clearRect(0, 0, canvas.width, canvas.height)
     createSky(ctx);
     createLandingPlanet(ctx);
     addPlanets(ctx);
-    addStars(ctx, starOpacity1, starOpacity2, starOpacity3);
+    addStars(ctx, starOpacity1, starOpacity2, starOpacity3, lowStarOpacity);
   }
 
   // UFO Drawing Functions 
@@ -249,8 +271,12 @@ const Canvas = props => {
 
   // Right after the canvas is in the dom, get it on JS to take context and draw
   useEffect(() => {
+    // Variables for Canvas
     const canvas = canvasRef.current;
     const ctx = canvas.getContext('2d'); 
+
+    // Variables for Animation timing
+    // const interval = setInterval(() => {}, 15)
 
     // Variables for UFO Placement and Animation
     let xBase = 400;
@@ -260,11 +286,15 @@ const Canvas = props => {
     let starOpacity2 = 0.5
     let starOpacity3 = 0.4
     let lowStarOpacity = true;
+    
+    const interval = setInterval(() => {
+      resizeCanvasToDisplaySize(canvas)
+      addBackground(canvas, ctx, starOpacity1, starOpacity2, starOpacity3, lowStarOpacity);
+    }, 1500)
 
-    // Draw
-    resizeCanvasToDisplaySize(canvas)
-    addBackground(ctx, starOpacity1, starOpacity2, starOpacity3);
-    // buildUfoBody(ctx, xBase, yBase);
+    return () => {
+      clearInterval(interval)
+    }
   }, [resizeCanvasToDisplaySize, addBackground])
   
 
